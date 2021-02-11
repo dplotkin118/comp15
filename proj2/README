@@ -1,0 +1,86 @@
+proj2 - Road Trip!
+Written By: Daniel Plotkin
+
+Purpose:
+The purpose of this assignment is to implement a floo network system, where
+a user can find paths between various locations in the country to travel to.
+
+Acknowledgements:
+Thank you to Mark for the wonderful online lectures about graphs :)
+C++ reference for teaching me about iomanip
+
+Files provided:
+findpath.cpp, the main driver of this program, Makefile, README, graph.cpp
+and graph.h, which contain the graph class for containing the data of
+locations.
+Functions in graph.h and graph.cpp: add_vertex, which adds a vertex to the
+network. add_edge, which adds an edge to the network. read_vertices, which reads
+in vertices from a .vdat file and stores them in the network. read_edges, which
+does the same, but for edges. print_graph, which prints out the names of all
+vertices in the network. run_program, which is the main driver for the program,
+allowing user input. compute_lat_degrees, which computes the latitude degrees
+of a location. compute_long_degrees, which does the same, but for longitude.
+compute_distance, which takes a set of 2 latitudes and 2 longitudes, and
+computes the distance between them. string_to_vertex, which converts a string
+to is corresponding vertex. is_in, which checks if a location is in the graph.
+is_path, which checks if there is a path between two locations. path, which
+prints a given number of paths between two locations. print_locations, the print
+function for path. print_paths, the helper function for paths.
+print_neighbors, which prints a location's neighbors.
+
+How to compile and run:
+compile: make
+run: ./findpath vertex_data edge_data
+
+Data structure used:
+In this project, I used a graph with adjacency lists. The adjacency
+lists are stored within the vertex node, and the vertices are stored in a
+vector. The benefit of using this data structure is the ability to easily
+store the data in nodes with edges representing the connections between the
+locations. Other data structures would be incredibly difficult to use for this
+purpose, and a graph is perfect. I also used many c++ vectors. 
+
+Testing:
+Testing was done as I went, without a testing file. When I tested helper
+functions, I inserted an input in the run_program function that allowed me to
+directly test the functions with inputs that I wished in the terminal.
+Testing quit: Testing quit was the first major test of the project, as being
+able to quit meant that the basic shell of my program worked. The first time
+I tried to run the program to get it to quit, nothing worked. I had to change
+my data structure slightly to incorporate a struct for each vertex of the graph
+and the graph itself would be a vector of these vertices. I also had to test
+that my function could correctly read in the data files. I tested the edge cases
+of no data file and 1 data file given, as well as being given files that it was
+unable to open. I tested that my data was being stored correctly by creating
+a testing function that printed out a vertex and all of its corresponding data.
+This was eventually adapted into the print_graph() function.
+
+Testing list: Testing list was very easy after testing quit, because I had
+already completed most of the printing work. During this testing, however, I
+noticed a bug that made the last entry in the data file be stored twice, and was
+thus being printed twice. I fixed this problem by changing the manner in which
+the data was being read in.
+
+Testing dist: Dist was the second most difficult part of this project, because
+it required the translation of latitude and minutes to latitude represented as
+a decimal. I ran into many problems with this conversion, mostly from failed
+arithmetic. Another problem I ran into was not adding enough error checking,
+requiring me to add error checking to each of the 3 functions I designed to
+tackle the distance problem.
+
+Testing path: Path was by far the most difficult part of this project. I
+began by making a function that determined whether a path was present between
+two vertices, with recursion that required me to test many different inputs
+that were possible and not possible. My go to inputs were path v1 v4 and path
+v6 v7, because one is possible and one is not. I also created a testing function
+that printed out a vertex's neighbors, because that allowed me to easier
+visualize if a path could be possible between two vertices. This was added to
+the run function as well as "printn". The next step was to create the path
+function. During this process, I discovered that paths were not being made
+because the value "checked" was not being updated correctly, and I had to change
+a lot of my code to make the vertices pointers instead of not pointers. This
+change fixed my issue, and was discovered through manual testing.
+
+Final testing: I finished my testing by making a short input list,
+test_commands.in, to test that my print functions had correct syntax. I diffed
+my output with the output created by ./rt, and from there I knew I was done.
