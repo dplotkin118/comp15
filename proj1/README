@@ -1,0 +1,57 @@
+PROJ1 - CalcYouLater - Reverse Polish Notation
+Written By: Daniel Plotkin
+
+Purpose:
+The purpose of this project is to create a functioning calculator that uses
+Reverse Polish Notation
+
+Acknowledgements:
+I acknowledge the help of lecture and labs, as well as the file i/o tips from
+the document:
+https://www.cs.tufts.edu/comp/15/reference/ioHandout/fileInteraction.pdf
+and cplusplus.com for help with vectors and stringstreams
+
+Files Provided:
+The files provided for part 1 include DatumStack.cpp, DatumStack.h, Makefile,
+testDatumStack, and parser.cpp. DatumStack.cpp includes methods for creating a
+stack out of Datums, including default constructor, a constructor that takes
+an array and a size and initializes a DatumStack with that information, an
+isEmpty function, which returns true if the DatumStack is empty and false
+otherwise, a clear function, which removes all elements from the DatumStack,
+a size function, which returns the size of the DatumStack, a top function,
+which returns the top element of the DatumStack, a pop function, which removes
+the top element of the DatumStack, and a push function, which adds an element
+to the top of the DatumStack. Parser.cpp includes a single function,
+which takes an istream input and returns a string of the form rstring.
+
+The files provided for part 2 add testRPNCalc, RPNCalc.cpp, and RPNCalc.h, as
+well as a testing file file.cylc. RPNCalc.cpp contains all of the functionality
+of the RPNCalc, including the ability to push ints, bools, and rstrings onto
+the stack, clear the stack, drop, duplicate, or print the top of the stack,
+find the not of a boolean. It can also swap the top two elements of the stack,
+quit the program, do arithmetic on the top elements of the stack, make comparisons
+between the top two elements, parse rstrings and put them on the stack,
+execute the inside of an rstring, run commands from a file, and perform if,
+a function that takes one boolean and two rstrings, and if the boolean is true,
+executes the first rstring, and otherwise executes the second.
+
+How to compile and run:
+Use make to compile
+./datumStack to run the testRPNCalc main function, which runs the program
+
+Data Structures used:
+A stack, made from a vector of Datums.
+
+Testing:
+To test the DatumStack class, I made a testDatumStack.cpp file, where I was able
+to test all of the functions and the constructor. I did not run into any large
+bugs. To test the parser, I created a main() within the file, and created
+various rstrings to pass into the function and test.
+
+To test the RPNCalc class, I mostly tested as I went, creating functionality
+and then testing all edge cases, including ones where the program could
+potentially crash. I regret having tested my functions in the command line
+rather than mainly using test functions in the program, because it is harder
+to keep track of what has been tested well and what hasn't. In the end, I made
+a testing file, called file.cylc, which contains all of the commands, and it
+works very well. 
